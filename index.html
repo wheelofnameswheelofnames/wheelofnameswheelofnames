@@ -25,12 +25,10 @@
             flex-direction: column; 
             align-items: center; 
             overflow-x: hidden;
-            /* تغيير لون الخلفية كما في الصورة (تدرج داكن) */
             background: radial-gradient(circle at center, #2c3e50 0%, #000000 100%);
             background-attachment: fixed;
         }
 
-        /* إضافة شريط التنقل العلوي */
         .site-header {
             width: 100%;
             display: flex;
@@ -40,24 +38,19 @@
             background: rgba(0,0,0,0.3);
             box-sizing: border-box;
         }
-     .site-header .logo {
-    font-size: 20px;
-    font-weight: 500;
-    /* تمت إزالة الإطار والحواف الدائرية */
-    padding: 2px 5px; 
-}
-
+        .site-header .logo {
+            font-size: 20px;
+            font-weight: 500;
+            padding: 2px 5px; 
         }
         .site-header .menu-icon {
             font-size: 24px;
             cursor: pointer;
         }
 
-        /* Fake Browser Bar */
         .fake-browser-bar { background: var(--browser-gray); padding: 8px 15px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #3c3f41; width: 100%; box-sizing: border-box; }
         .address-input-wrapper { flex-grow: 1; background: #1e1e1e; border-radius: 20px; padding: 6px 15px; display: flex; align-items: center; color: #888; font-size: 13px; border: 1px solid #3c3f41; }
 
-        /* Wheel Instructions Over the Wheel (تعديل لتصبح مقوسة) */
         .main-stage { position: relative; margin: 40px 0; display: flex; justify-content: center; align-items: center; }
         .wheel-instructions { 
             position: absolute; 
@@ -65,6 +58,7 @@
             z-index: 10; 
             width: 100%; 
             height: 100%;
+            transition: opacity 0.3s;
         }
         .curved-svg { width: 100%; height: 100%; }
         .curved-text { fill: white; font-weight: 900; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
@@ -73,7 +67,6 @@
         canvas { width: 100%; height: 100%; border-radius: 50%; transition: transform 5s cubic-bezier(0.1, 0, 0.1, 1); }
         .pointer { position: absolute; right: -10px; top: 50%; transform: translateY(-50%); border-top: 15px solid transparent; border-bottom: 15px solid transparent; border-right: 25px solid #d32f2f; z-index: 100; }
 
-        /* زر التعديل الدائري الأزرق */
         .edit-btn-circle {
             position: absolute;
             top: -20px;
@@ -89,14 +82,12 @@
             z-index: 50;
         }
 
-        /* Control Panel */
         .bottom-panel { width: 95%; max-width: 550px; background: var(--panel-dark); border-radius: 8px; border: 1px solid var(--border-color); direction: ltr; margin-bottom: 15px; }
         .tabs { display: flex; border-bottom: 1px solid var(--border-color); }
         .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; color: #aaa; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         .tab.active { color: white; border-bottom: 2px solid white; }
         .counter { background: #444; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 8px; }
 
-        /* Buttons with Icons (Shuffle, Sort, Add Image) */
         .toolbar { padding: 12px; }
         .top-row { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; flex-wrap: wrap; }
         .tool-btn { padding: 7px 12px; border: none; color: white; border-radius: 4px; cursor: pointer; font-size: 14px; background: var(--btn-blue); display: flex; align-items: center; gap: 6px; font-weight: 500; }
@@ -105,13 +96,11 @@
         .text-container { border: 1px solid #444; border-radius: 4px; height: 160px; background: #000; padding: 10px; }
         textarea { width: 100%; height: 100%; background: transparent; color: white; border: none; outline: none; font-size: 17px; resize: none; direction: rtl; }
 
-        /* Footer Section (Add Wheel & Version) */
         .footer-tools { width: 95%; max-width: 550px; margin-bottom: 30px; }
         .add-wheel-wrap { position: relative; width: fit-content; margin-bottom: 10px; }
         .beta-tag { position: absolute; top: -12px; left: 0; background: #ffca28; color: black; font-size: 9px; font-weight: 900; padding: 1px 5px; border-radius: 3px; }
         .version-row { display: flex; justify-content: space-between; font-size: 12px; color: #888; }
 
-        /* Info Cards (All the text from the screenshot) */
         .info-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; margin-bottom: 15px; width: 95%; max-width: 550px; direction: ltr; box-sizing: border-box; }
         .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
         .title-icon { width: 22px; height: 22px; background: conic-gradient(#4285f4, #ea4335, #fbbc05, #34a853, #4285f4); border-radius: 50%; }
@@ -120,11 +109,28 @@
         .link { color: var(--link-blue); text-decoration: underline; cursor: pointer; font-weight: 500; }
         .stat-val { color: var(--stat-green); font-size: 38px; font-weight: bold; line-height: 1.2; margin: 5px 0 20px 0; }
 
-        /* Winner Overlay */
         #winnerOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 2000; }
         .winner-card { background: #1a1a1b; border-radius: 12px; width: 90%; max-width: 400px; text-align: center; overflow: hidden; }
         .winner-box { background: #3b82f6; padding: 30px; margin: 20px; border-radius: 8px; font-size: 26px; font-weight: bold; }
-        .confetti { position: fixed; width: 10px; height: 10px; pointer-events: none; z-index: 2500; }
+        
+        /* تحسين استايل قصاصات الورق */
+        .confetti { 
+            position: fixed; 
+            width: 12px; 
+            height: 12px; 
+            pointer-events: none; 
+            z-index: 2500; 
+            top: -20px;
+        }
+        .confetti.star {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        .confetti.square {
+            border-radius: 2px;
+        }
+        .confetti.circle {
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -247,6 +253,11 @@
     <script>
         const canvas = document.getElementById('wheelCanvas'), ctx = canvas.getContext('2d');
         const textInput = document.getElementById('textInput'), resultsDiv = document.getElementById('results-list');
+        
+        // تعريف الملفات الصوتية المضافة
+        const spinSound = new Audio('a.mp3');
+        const winSound = new Audio('b.mp3');
+
         let names = [], rotation = 0, spinning = false, currentStep = 0;
         const scriptedWinners = ["داليا الشميري", "ابو ياسر الجبل", "سهام الحميدي"];
         const colors = ["#4285f4", "#ea4335", "#fbbc05", "#34a853", "#9c27b0"];
@@ -275,7 +286,13 @@
 
         function spin() {
             if (spinning || names.length === 0) return;
-            spinning = true; document.getElementById('wheelLabels').style.opacity = "0";
+            spinning = true; 
+            document.getElementById('wheelLabels').style.opacity = "0";
+
+            // تشغيل صوت الدوران عند بدء الحركة
+            spinSound.currentTime = 0;
+            spinSound.play();
+
             let winner = (currentStep < scriptedWinners.length) ? scriptedWinners[currentStep++] : names[Math.floor(Math.random() * names.length)];
             const winnerIndex = names.indexOf(winner);
             const stopAngle = 360 - (winnerIndex * (360 / names.length) + (180 / names.length));
@@ -284,6 +301,12 @@
             
             setTimeout(() => {
                 spinning = false;
+
+                // إيقاف صوت الدوران وتشغيل صوت الفوز (التصفيق)
+                spinSound.pause();
+                winSound.currentTime = 0;
+                winSound.play();
+
                 document.getElementById('winnerNameDisplay').innerText = winner;
                 document.getElementById('winnerOverlay').style.display = 'flex';
                 document.getElementById('wheelLabels').style.opacity = "1";
@@ -299,16 +322,38 @@
             }, 5000);
         }
 
+        // تحديث وظيفة القصاصات لتشمل أشكالاً متعددة وتنتشر في كامل الشاشة
         function createConfetti() {
-            for(let i=0; i<100; i++) {
+            const shapes = ['circle', 'square', 'star'];
+            for(let i=0; i<150; i++) {
                 const c = document.createElement('div');
-                c.className = 'confetti';
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                c.className = `confetti ${shape}`;
                 c.style.background = colors[Math.floor(Math.random()*colors.length)];
-                c.style.left = '50%'; c.style.top = '50%';
+                
+                // تحديد موقع عشوائي على كامل عرض الشاشة
+                c.style.left = Math.random() * 100 + 'vw'; 
+                
+                // أحجام عشوائية خفيفة
+                const size = (Math.random() * 10 + 5) + 'px';
+                c.style.width = size;
+                c.style.height = size;
+
                 document.body.appendChild(c);
-                const a = Math.random()*Math.PI*2, v = 5+Math.random()*15;
-                c.animate([{transform:'translate(0,0)'},{transform:`translate(${Math.cos(a)*v*20}px,${Math.sin(a)*v*20}px)`}], {duration:2000});
-                setTimeout(()=>c.remove(), 2000);
+                
+                // حركة السقوط مع دوران عشوائي وتمايل
+                const duration = Math.random() * 3000 + 2000;
+                const xMovement = (Math.random() - 0.5) * 400; // تمايل يميناً ويساراً
+                
+                c.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(100vh) translateX(${xMovement}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0, .9, .6, 1)'
+                });
+
+                setTimeout(() => c.remove(), duration);
             }
         }
 
@@ -319,12 +364,28 @@
             document.getElementById('tab-res').classList.toggle('active', t==='results');
         }
 
-        function closePop() { document.getElementById('winnerOverlay').style.display='none'; }
-        function removeWin() {
-            const w = document.getElementById('winnerNameDisplay').innerText;
-            names = names.filter(n => n !== w); textInput.value = names.join('\n');
-            updateWheel(); closePop();
+        function closePop() { 
+            document.getElementById('winnerOverlay').style.display='none'; 
+            winSound.pause();
+            winSound.currentTime = 0;
         }
+
+        function removeWin() {
+    const w = document.getElementById('winnerNameDisplay').innerText;
+    
+    // 1. حذف الاسم من المصفوفة
+    names = names.filter(n => n !== w); 
+    
+    // 2. تحديث المربع النصي
+    textInput.value = names.join('\n');
+    
+    // 3. تحديث العجلة (وهذا سيقوم بتحديث عداد Entries تلقائياً)
+    updateWheel(); 
+    
+    // 4. إغلاق النافذة
+    closePop();
+}
+
 
         function shuffleNames() { names.sort(() => Math.random() - 0.5); textInput.value = names.join('\n'); updateWheel(); }
         function sortNames() { names.sort((a,b) => a.localeCompare(b, 'ar')); textInput.value = names.join('\n'); updateWheel(); }
