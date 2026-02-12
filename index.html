@@ -16,7 +16,7 @@
             --link-blue: #58a6ff;
         }
 
-        body { 
+                                body { 
             font-family: 'Segoe UI', Tahoma, sans-serif; 
             margin: 0; 
             min-height: 100vh;
@@ -25,8 +25,27 @@
             flex-direction: column; 
             align-items: center; 
             overflow-x: hidden;
-            background: radial-gradient(circle at center, #2c3e50 0%, #000000 100%);
+            /* الخلفية: أزرق عميق إلى كبدي غامق */
+            background: linear-gradient(135deg, #0f1c2e 0%, #2d0a0a 100%);
             background-attachment: fixed;
+        }
+
+        .site-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.3);
+            box-sizing: border-box;
+            /* إجبار المحاذاة من اليسار لليمين للهيدر فقط */
+            direction: ltr; 
+        }
+
+        }
+
+        }
+
         }
 
         .site-header {
